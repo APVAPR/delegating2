@@ -26,19 +26,23 @@ class SweetTooth(Initialization):
     # def __init__(self):
     #     super().__init__(capacity, food)
     def __str__(self):
-        return f'Сладкоежек в Москве {self.capacity}. Их самая любимая еда {self.food}'
+        return f'Сладкоежек в Москве {self.capacity}. Их самая любимая еда: {self.food}'
 
     def __eq__(self, other):
         if isinstance(other, int):
             return self.capacity == other
-        elif hasattr(other, capacity):
+        elif isinstance(other, MeatEater):
+            return self.capacity == other.capacity
+        elif isinstance(other, Vegetarian):
             return self.capacity == other.capacity
         return f'Невозможно сравнить количество сладкоежек с {other}'
 
     def __gt__(self, other):
         if isinstance(other, int):
             return self.capacity > other
-        elif hasattr(other, other.capacity):
+        elif isinstance(other, MeatEater):
+            return self.capacity > other.capacity
+        elif isinstance(other, Vegetarian):
             return self.capacity > other.capacity
         return f'Невозможно сравнить количество сладкоежек с {other}'
 
@@ -46,6 +50,7 @@ class SweetTooth(Initialization):
 v_first = Vegetarian(10000, ['Орехи', 'овощи', 'фрукты'])
 print(v_first)  # 10000 людей предпочитают не есть мясо! Они предпочитают ['Орехи', 'овощи', 'фрукты']
 v_second = Vegetarian([23], ['nothing'])  # Количество людей должно быть целым числом
+
 m_first = MeatEater(15000, ['Жареную картошку', 'рыба'])
 print(m_first)  # 15000 мясоедов в Москве! Помимо мяса они едят еще и ['Жареную картошку', 'рыба']
 s_first = SweetTooth(30000, ['Мороженое', 'Чипсы', 'ШОКОЛАД'])
